@@ -37,8 +37,9 @@ public class OAuth2UserService extends DefaultOAuth2UserService {
                 String nickname = (String) attributesProperties.get("nickname");
                 String profileImgUrl = (String) attributesProperties.get("profile_image");
                 String username = "KAKAO_%s".formatted(oauthId);
+                String email = oauthId + "@kakao.com";
 
-                Member member = memberService.modifyOrJoin(username, oauthType, nickname, profileImgUrl).getData();
+                Member member = memberService.modifyOrJoin(username, oauthType, email, nickname, profileImgUrl).getData();
 
                 return new SecurityUser(member.getUsername(), member.getPassword(), member.getAuthorities());
             }
