@@ -50,6 +50,10 @@ public class Member extends BaseTime {
         return authorities;
     }
 
+    public String getName() {
+        return getNickname();
+    }
+
     public boolean isAdmin() {
         return List.of("system", "admin").contains(getUsername());
     }

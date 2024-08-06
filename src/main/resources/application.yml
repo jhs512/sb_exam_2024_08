@@ -4,6 +4,8 @@ spring:
   output:
     ansi:
       enabled: always
+  thymeleaf:
+    cache: false
   h2:
     console:
       enabled: true
