@@ -11,4 +11,9 @@ public class MemberController {
     public String showLogin() {
         return "member/login";
     }
+
+    @GetMapping("/me")
+    public String showMe() {
+        return "member/me";
+    }
 }

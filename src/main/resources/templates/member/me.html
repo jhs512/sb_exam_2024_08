@@ -1,0 +1,10 @@
+<html layout:decorate="~{layout.html}">
+
+<main layout:fragment="main" class="flex-grow flex items-center justify-center">
+    <div>
+        <div>가입 : <span th:text="${@rq.member.createDate}"></span></div>
+        <div>아이디 : <span th:text="${@rq.member.username}"></span></div>
+    </div>
+</main>
+
+</html>
