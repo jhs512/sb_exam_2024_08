@@ -22,7 +22,7 @@ public class PostController {
 
     @GetMapping("/list")
     public String showList(Model model) {
-        model.addAttribute("posts", postService.findAllByOrderByIdDesc());
+        model.addAttribute("posts", postService.findByParentOrderByIdDesc(null));
 
         return "post/list";
     }

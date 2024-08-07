@@ -3,15 +3,25 @@
 <main layout:fragment="main" class="flex-grow flex items-center justify-center">
     <ul>
         <li th:each="post : ${posts}">
-            <span th:text="${post.id}"></span>
-
-            <span th:text="${post.author.name}"></span>
-
-            <span th:text="${post.title}"></span>
-
-            <hr>
+            <div th:include="::postFragment (post=${post}, depth=${0})"></div>
         </li>
     </ul>
 </main>
+
+<!-- 포스트 정보를 보여주는 fragment 정의 -->
+<div th:fragment="postFragment (post, depth)">
+    <div th:style="'padding-left:' + (${depth} * 20) + 'px;'">
+        <span th:text="${post.id}"></span>
+        <span th:text="${post.author.name}"></span>
+        <span th:text="${post.title}"></span>
+        <hr>
+    </div>
+    <!-- 자식 포스트들을 재귀적으로 포함 -->
+    <ul th:if="${!post.children.empty}">
+        <li th:each="child : ${post.children}">
+            <div th:include="::postFragment (post=${child}, depth=${depth} + 1)"></div>
+        </li>
+    </ul>
+</div>
 
 </html>

@@ -26,7 +26,7 @@ public class PostService {
         return postRepository.save(post);
     }
 
-    public List<Post> findAllByOrderByIdDesc() {
-        return postRepository.findAllByOrderByIdDesc();
+    public List<Post> findByParentOrderByIdDesc(Post parent) {
+        return postRepository.findByParentOrderByIdDesc(parent);
     }
 }

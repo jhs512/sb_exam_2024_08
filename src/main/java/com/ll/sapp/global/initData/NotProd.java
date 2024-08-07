@@ -2,6 +2,7 @@ package com.ll.sapp.global.initData;
 
 import com.ll.sapp.domain.member.MemberService;
 import com.ll.sapp.domain.member.entity.Member;
+import com.ll.sapp.domain.post.entity.Post;
 import com.ll.sapp.domain.post.service.PostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,12 +41,20 @@ public class NotProd {
         Member memberUser2 = memberService.join("user2", "1234").getData();
         Member memberUser3 = memberService.join("user3", "1234").getData();
 
-        postService.write(memberUser1, "제목 1", "내용 1");
+        Post post1 = postService.write(memberUser1, "제목 1", "내용 1");
+
         postService.write(memberUser1, "제목 2", "내용 2");
         postService.write(memberUser1, "제목 3", "내용 3");
         postService.write(memberUser1, "제목 4", "내용 4");
 
         postService.write(memberUser2, "제목 5", "내용 5");
         postService.write(memberUser2, "제목 6", "내용 6");
+
+        post1.addChild(memberUser1, "제목 7", "내용 7");
+        post1.addChild(memberUser1, "제목 8", "내용 8");
+        Post post9 = post1.addChild(memberUser1, "제목 9", "내용 9");
+
+        post9.addChild(memberUser2, "제목 10", "내용 10");
+        post9.addChild(memberUser2, "제목 11", "내용 11");
     }
 }
